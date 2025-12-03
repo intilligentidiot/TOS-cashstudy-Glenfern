@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Architectural BIM Modeling for Glenfern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'tesla-red': '#D32F2F',
+                        'tesla-dark': '#1a1a1a',
+                        'arch-gray': '#f4f6f8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .image-hover-zoom {
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .image-hover-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .image-hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                     <!-- Using Logo URL from source -->
+                    <img class="h-8 w-auto" src="https://www.teslaoutsourcingservices.com/images/tos-logo.svg" alt="Tesla Outsourcing Services">
+                    <span class="hidden md:block font-semibold text-gray-700 tracking-tight">Case Studies</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#overview" class="text-gray-600 hover:text-tesla-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Overview</a>
+                    <a href="#details" class="text-gray-600 hover:text-tesla-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Project Details</a>
+                    <a href="#scope" class="text-gray-600 hover:text-tesla-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Scope & Content</a>
+                    <a href="#gallery" class="text-gray-600 hover:text-tesla-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Gallery</a>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white border-b" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#overview" class="block text-gray-700 hover:bg-gray-50 hover:text-tesla-red px-3 py-2 rounded-md text-base font-medium">Overview</a>
+                <a href="#details" class="block text-gray-700 hover:bg-gray-50 hover:text-tesla-red px-3 py-2 rounded-md text-base font-medium">Details</a>
+                <a href="#scope" class="block text-gray-700 hover:bg-gray-50 hover:text-tesla-red px-3 py-2 rounded-md text-base font-medium">Scope</a>
+                <a href="#gallery" class="block text-gray-700 hover:bg-gray-50 hover:text-tesla-red px-3 py-2 rounded-md text-base font-medium">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="overview" class="relative h-[85vh] flex items-center justify-center overflow-hidden">
+        <!-- Main Hero Image from source -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://www.teslaoutsourcingservices.com/images/case-study/architectural-bim-modeling-of-residential-building-3d-render-1.webp" 
+                 alt="Glenfern 3D Render" 
+                 class="w-full h-full object-cover object-center"
+                 onerror="this.src='https://placehold.co/1920x1080?text=Project+Render+Image'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-block px-4 py-1 mb-4 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm text-sm tracking-wider uppercase">Case Study</div>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">Architectural BIM Modeling for Glenfern</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-light">
+                Transforming 2D drafts into comprehensive LOD 350 models for 13 unique residential designs.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+                <a href="https://www.teslaoutsourcingservices.com/case-study/architectural-bim-modeling-of-residential-building.php" class="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg">
+                    View Project Details
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Stats Grid (Modernized "Project Details") -->
+    <section id="details" class="py-16 bg-white -mt-20 relative z-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8 border-l-4 border-tesla-red pl-4">Project Snapshot</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                    <div class="space-y-2">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Project Name</p>
+                        <p class="text-lg font-bold text-gray-800">Glenfern</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Location</p>
+                        <p class="text-lg font-bold text-gray-800">Australia</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Software</p>
+                        <div class="flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 text-blue-600">
+                                <i class="fas fa-desktop text-sm"></i>
+                            </span>
+                            <p class="text-lg font-bold text-gray-800">Revit</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Level of Detail</p>
+                        <p class="text-lg font-bold text-gray-800">LOD 350</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Scale</p>
+                        <p class="text-lg font-bold text-gray-800">13 Designs</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Timeline</p>
+                        <p class="text-lg font-bold text-green-600">16 Days</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section id="scope" class="py-16 lg:py-24 bg-arch-gray overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Introduction Block -->
+            <div class="flex flex-col lg:flex-row gap-12 items-center mb-24">
+                <div class="lg:w-1/2 space-y-6 fade-in-up">
+                    <h2 class="text-3xl font-serif font-bold text-gray-900">Architectural BIM Modeling for 13 Housetypes</h2>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        This project involved transforming 2D design drafts into comprehensive, informative 3D models that were instrumental in developing the final construction drawings.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Our team efficiently completed <span class="font-semibold text-gray-800">Architectural 3D modeling</span> for 13 residential units in approximately 15 to 16 days. This involved achieving LOD 350 with accurate master modeling for each unit. We effectively utilized design options to manage the various facade designs and meticulously added relevant information, seamlessly transitioning the models from the "Design" stage to the "For Construction" stage.
+                    </p>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-tesla-red mt-6">
+                        <h4 class="font-bold text-gray-900 mb-2">Key Achievement</h4>
+                        <p class="text-gray-600 text-sm">Transitioned models from Design to Construction stage in under 3 weeks for 13 unique unit types.</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl image-hover-zoom">
+                        <img src="https://www.teslaoutsourcingservices.com/images/case-study/architectural-bim-modeling-of-residential-building-3d-render-2.webp" 
+                             alt="Glenfern 3D Render 2" 
+                             class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Contents & Technical Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+                
+                <!-- Left: Model Contents -->
+                <div class="fade-in-up" style="animation-delay: 0.3s;">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-cubes text-tesla-red mr-3"></i> Model Contents
+                    </h3>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-gray-600 mb-6">We created a comprehensive digital twin including:</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Site, columns, walls, floors, and roof elements</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Doors, windows, stairs, railings, and ceilings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Bulkheads, openings, and kitchen equipment</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Sanitary fixtures and detailed façade elements (sweeps, trims)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-700">Material specifications where visible</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right: Accuracy Assurance -->
+                <div class="fade-in-up" style="animation-delay: 0.4s;">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-ruler-combined text-tesla-red mr-3"></i> Accuracy Assurance
+                    </h3>
+                    <div class="bg-gray-900 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+                        <ul class="space-y-6 relative z-10">
+                            <li class="border-b border-gray-700 pb-4 last:border-0 last:pb-0">
+                                <h5 class="text-gray-400 text-xs uppercase tracking-wider mb-1">Standard</h5>
+                                <p class="font-medium text-lg">Tolerance Standards maintained throughout the entire model</p>
+                            </li>
+                            <li class="border-b border-gray-700 pb-4 last:border-0 last:pb-0">
+                                <h5 class="text-gray-400 text-xs uppercase tracking-wider mb-1">Point Cloud vs Revit</h5>
+                                <p class="font-medium text-lg text-green-400">±15mm Accuracy</p>
+                            </li>
+                            <li class="border-b border-gray-700 pb-4 last:border-0 last:pb-0">
+                                <h5 class="text-gray-400 text-xs uppercase tracking-wider mb-1">Scan Interpretation</h5>
+                                <p class="font-medium text-gray-200">Modeled orthogonal/straight for undulations up to 1”</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Drawings Showcase -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif font-bold text-gray-900 text-center mb-12">Technical Visualization</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="https://www.teslaoutsourcingservices.com/images/case-study/architectural-bim-modeling-of-residential-building-exploded-view.webp" alt="Exploded View" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <p class="text-white font-medium">Revit 3D Exploded View</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="https://www.teslaoutsourcingservices.com/images/case-study/floor-plan.webp" alt="Floor Plan" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <p class="text-white font-medium">Floor Plan Layout</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                 <img src="https://www.teslaoutsourcingservices.com/images/case-study/side-elevation.webp" alt="Side Elevation" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
+                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <p class="text-white font-medium">Side Elevation Analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 lg:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-serif font-bold text-gray-900 mb-4">Project Gallery</h2>
+                <div class="h-1 w-20 bg-tesla-red mx-auto"></div>
+                <p class="mt-4 text-gray-600">A closer look at the 13 unique residential designs modeled in Revit.</p>
+            </div>
+
+            <!-- Masonry-style Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Gallery Image 1 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-md aspect-video">
+                    <img src="https://www.teslaoutsourcingservices.com/images/case-study/architectural-bim-modeling-of-residential-building-1.webp" 
+                         alt="Architectural 3D Modeling 1" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+                
+                <!-- Gallery Image 2 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-md aspect-video">
+                    <img src="https://www.teslaoutsourcingservices.com/images/case-study/architectural-bim-modeling-of-residential-building-2.webp" 
+                         alt="Architectural 3D Modeling 2" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+                <!-- Gallery Image 3 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-md aspect-video">
+                    <img src="https://www.teslaoutsourcingservices.com/images/case-study/architectural-bim-modeling-of-residential-building-3.webp" 
+                         alt="Architectural 3D Modeling 3" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+                <!-- Gallery Image 4 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-md aspect-video">
+                    <img src="https://www.teslaoutsourcingservices.com/images/case-study/architectural-bim-modeling-of-residential-building-4.webp" 
+                         alt="Architectural 3D Modeling 4" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Footer -->
+    <footer class="bg-tesla-dark text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Branding -->
+                <div>
+                    <img src="https://www.teslaoutsourcingservices.com/images/tos-logo-white.svg" alt="Tesla Outsourcing Services" class="h-10 w-auto mb-6">
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Delivering high-precision BIM, CAD, and Visualization services globally since 2007.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://www.linkedin.com/company/tesla-outsourcing-services/" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="https://x.com/teslaoutsource" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="https://www.pinterest.com/teslaoutsource/" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Contact -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white border-b border-gray-700 pb-2 inline-block">Contact</h4>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-tesla-red mr-3 w-5"></i>
+                            <a href="mailto:services@teslaoutsourcingservices.com" class="hover:text-white">services@teslaoutsourcingservices.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-tesla-red mr-3 w-5"></i>
+                            <span>USA: +1 416 907 9430</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-tesla-red mr-3 w-5"></i>
+                            <span>UK: +44 333 011 9045</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white border-b border-gray-700 pb-2 inline-block">Key Services</h4>
+                    <ul class="grid grid-cols-1 gap-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-tesla-red transition-colors">Architectural BIM</a></li>
+                        <li><a href="#" class="hover:text-tesla-red transition-colors">Structural Steel Detailing</a></li>
+                        <li><a href="#" class="hover:text-tesla-red transition-colors">MEP Coordination</a></li>
+                        <li><a href="#" class="hover:text-tesla-red transition-colors">Scan to BIM</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; Tesla Outsourcing Services LLC. All Rights Reserved.</p>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to handle scroll events for navbar transparency
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-white/90', 'bg-white/95');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('bg-white/95', 'bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>
